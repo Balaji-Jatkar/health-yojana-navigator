@@ -1,0 +1,844 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #33679b;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* Header & Nav */
+
+
+
+header {
+  background: linear-gradient(135deg, #005792, #00334e);
+    padding: 1rem 2rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+/* icon customisation */
+header h1 i {    
+  margin-right: 10px;
+  color: #4ecdc4;
+}
+
+nav {
+    margin-top: 0.5rem;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #ffdd57;
+}
+
+
+/* Sections */
+
+main {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section {
+    display: none;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.visible {
+    display: block;
+}
+
+main > section {
+    display: none;
+}
+
+main > section.visible {
+    display: block;
+}
+
+h2 {
+    color: #23566d;
+    margin-bottom: 1rem;
+}
+
+input,
+select,
+button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+button {
+  background: linear-gradient(135deg, #005792, #00334e);
+color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #006b96;
+}
+
+#loginStatus,
+#bookingResult,
+#policyResult {
+
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #006400;
+}
+
+
+/* Home */
+
+.home-container {
+
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.animated {
+  border-bottom: 2px solid #4ecdc4;
+  padding-bottom: 15px;
+animation: fadeIn 1s ease-in-out;
+}
+
+.subtext {
+    font-size: 1.2rem;
+    color: #444;
+    margin-top: 0.5rem;
+}
+
+#clock {
+    font-size: 1rem;
+    color: #1a8bbf;
+    margin-top: 1rem;
+}
+
+
+/* Features */
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: #2e0e0e;
+
+}
+
+.card {
+    background-color: #e8f0fe;
+    border-radius: 12px;
+    padding: 1.2rem;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* .card:hover {
+    transform: translateY(-5px);
+} */
+
+.card span {
+font-size: 2rem;
+ display: block;
+    margin-bottom: 10px;
+}
+
+
+/* Chatbot */
+
+#chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#chatbot button {
+    background-color: #006494;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 20px;
+    color: white;
+    border: none;
+}
+
+#chatWindow {
+    display: none;
+    position: absolute;
+    bottom: 65px;
+    right: 0;
+    width: 280px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 1rem;
+}
+
+#chatWindow p {
+    margin: 0.5rem 0;
+}
+
+#chatInput {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.clickable {
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.clickable:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+#patientRegistration {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    max-width: 400px;
+}
+
+#patientRegistration h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#patientRegistration label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#patientRegistration input,
+#patientRegistration select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#patientRegistration button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#patientRegistration button:hover {
+    background-color: #45a049;
+}
+
+#registrationResult {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+}
+/* General Styles */
+html, body {
+    height: 100%; /* Ensure the body takes up the full height of the viewport */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Use flexbox to structure the layout */
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: #f9f9f9;
+  }
+  
+  main {
+    flex: 1; /* Allow the main content to grow and push the footer to the bottom */
+    padding: 20px;
+  }
+  
+  /* Header Styles */
+  header {
+    background: linear-gradient(135deg, #005792, #00334e);
+   color: white;
+    padding: 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif; /* Ensure consistent font */
+    font-weight: bold; /* Make the logo text bold */
+  }
+  
+  .dashboard-title {
+    margin: 10px 0 0;
+    font-size: 24px; /* Match the font size with the logo */
+    color: #ffdd57; /* Highlighted color */
+    font-family: 'Segoe UI', sans-serif; /* Ensure consistent font */
+    font-weight: bold; /* Match the bold style of the logo */
+    text-align: center; /* Center the text */
+  }
+  
+  .header-nav {
+    
+    nav {
+      display: flex;
+      justify-content: center; /* Centre the links */
+      gap: 20px; /* Adds space between links */
+      flex-wrap: wrap; /* Allows wrapping into new rows if needed */
+  }
+  
+  }
+  
+  .header-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .header-nav a:hover {
+    color: #ffdd57;
+  }
+  
+  .icon-button {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Add spacing between icon and text */
+    color: white;
+    background-color: #007bff;
+    padding: 5px 10px;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .icon-button i {
+    font-size: 14px; /* Adjust icon size */
+  }
+  
+  .icon-button:hover {
+    background-color: #0056b3;
+  }
+  
+  nav {
+    margin-top: 10px;
+  }
+  
+  nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: underline;
+  }
+  
+  .card-section {
+    margin-bottom: 40px;
+  }
+  
+  .card-section h2 {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-bottom: 15px;
+  }
+  
+  .card h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #007bff;
+  }
+  
+  .card p {
+    margin: 5px 0;
+  }
+  
+  .card button {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .card button:hover {
+    background-color: #218838;
+  }
+  
+  .button-section {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  /* Button Container */
+  .button-container {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    align-items: center; /* Center the buttons vertically */
+    gap: 20px; /* Add spacing between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line if needed */
+    margin-top: 10px; /* Reduce the space between the welcome box and buttons */
+  }
+  
+  .button {
+    display: inline-block;
+    width: 200px; /* Fixed width for equal-sized buttons */
+    height: 100px; /* Fixed height for equal-sized buttons */
+    line-height: 100px; /* Center text vertically */
+    font-size: 18px; /* Adjust font size */
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 10px; /* Rounded corners */
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
+  
+  /* Welcome Box */
+  .welcome-box {
+    background-color: #f8f9fa; /* Light background for the box */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 600px; /* Limit the width of the box */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add a shadow for depth */
+  }
+  
+  .welcome-box h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #007bff; /* Highlighted color for the heading */
+  }
+  
+  .welcome-box p {
+    margin: 0 0 20px;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .welcome-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745; /* Green button */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .welcome-button:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
+
+  
+  /* Footer Styles */
+
+  /* footer {
+    background: #063261;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto; /* Push the footer to the bottom */
+  
+  /* footer p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  footer .contact-info {
+    font-size: 14px;
+  }  */
+  
+  footer {
+    background: linear-gradient(135deg, #005792, #00334e);
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+/* social icons styling */
+.social-icons a {
+  color: #fff;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #4ecdc4;
+}
+
+  /* Yojana Container */
+  .yojana-container {
+    display: flex;
+    flex-direction: row; /* Stack the boxes vertically */
+    gap: 20px; /* Add spacing between the boxes */
+    padding: 20px;
+  }
+  
+  .yojana-box {
+    background: white;
+    flex-direction: row;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .yojana-box h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    color: #007bff;
+  }
+  
+  .yojana-box p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+  }
+  
+.yojana-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  .yojana-card h3 {
+    margin-top: 0;
+    color: #0077cc;
+  }
+  
+  .yojana-card p {
+    margin: 5px 0;
+  }
+  .navbar {
+    text-decoration: none ;
+    background: linear-gradient(135deg, #005792, #00334e);
+    padding: 10px 0;
+  }
+  
+  .nav-links {
+    background: linear-gradient(135deg, #005792, #00334e);
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    gap: 40px;
+  }
+
+   /* navigation text editing */
+  .nav-links li a {
+    color: white;
+    background-color: none;
+    font-weight: bold;
+    text-decoration: none; /* Remove underline */
+    padding: 8px 15px;
+    border-radius: 6px; /* Blunt edges */
+    transition: background-color 0.3s ease;
+  }
+
+  .nav-links li a:hover {
+    background-color: #4ecdc4; /* Light aqua color on hover (matches your theme) */
+    color: #00334e; /* Darker text on hover for contrast */
+  }
+  /* .yojana-box h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Match font */
+    /* color: #283e50; /* Match the blue shade */
+    /* font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+}  */
+
+/* General styling for yojana cards */
+.yojana-card {
+    display: block; /* Ensure cards are block elements */
+    margin: 20px auto; /* Add spacing between cards */
+    padding: 15px; /* Add padding inside the cards */
+    box-sizing: border-box; /* Include padding and border in width/height */
+     /* Add a light border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+    font-family: Arial, sans-serif; /* Consistent font */
+    font-size: 1rem; /* Consistent font size */
+    color: #333; /* Text color */
+}
+
+/* Styling for headings inside yojana cards */
+.yojana-card h3 {
+    font-size: 1.5rem; /* Larger font size for headings */
+    color: #000; /* Darker color for headings */
+    margin-bottom: 10px; /* Add spacing below headings */
+}
+
+/* Styling for paragraphs inside yojana cards */
+.yojana-card p {
+    margin: 5px 0; /* Add spacing between paragraphs */
+    line-height: 1.5; /* Improve readability */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .yojana-card {
+        width: 90%; /* Adjust width for smaller screens */
+    }
+}
+
+/* Add this to your CSS file to make yojanas display horizontally */
+
+/* Container for the yojana cards */
+#yojanaList {
+  width: 100%;
+  max-width: 100%; /* Override the previous max-width setting */
+}
+
+/* Create a flex container for horizontal alignment */
+#yojanaList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Style for individual yojana cards */
+.yojana-card {
+  flex: 0 0 calc(33.333% - 20px); /* Three cards per row with spacing */
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+/* For medium screens */
+@media (max-width: 992px) {
+  .yojana-card {
+      flex: 0 0 calc(50% - 20px); /* Two cards per row */
+  }
+}
+
+/* For smaller screens */
+@media (max-width: 576px) {
+  .yojana-card {
+      flex: 0 0 100%; /* One card per row */
+  }
+}
+
+/* Fix for .yojana-box which has similar styling */
+.yojana-box {
+  flex: 0 0 calc(33.333% - 20px);
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+/* Media queries for .yojana-box */
+@media (max-width: 992px) {
+  .yojana-box {
+      flex: 0 0 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 576px) {
+  .yojana-box {
+      flex: 0 0 100%;
+  }
+}
+
+/* Profile Page Styles */
+
+
+.profile-container h2 {
+  color: #005792;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #4ecdc4;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-container h2 i {
+  color: #4ecdc4;
+}
+
+.profile-info {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.profile-avatar {
+  font-size: 5rem;
+  color: #005792;
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#profileData {
+  flex: 1;
+}
+
+.profile-field {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.field-label {
+  font-weight: bold;
+  color: #333;
+  display: inline-block;
+  width: 80px;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-start;
+}
+
+.profile-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s;
+}
+
+#editProfileBtn {
+  background-color: #005792;
+  color: white;
+}
+
+#editProfileBtn:hover {
+  background-color: #00334e;
+}
+
+#logoutBtn {
+  background-color: #f44336;
+  color: white;
+}
+
+#logoutBtn:hover {
+  background-color: #d32f2f;
+}
+
+.nav-links li a.active {
+  color: #4ecdc4;
+  text-decoration: none;
+}
+
+.nav-links li a i {
+  margin-right: 5px;
+}

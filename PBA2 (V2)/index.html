@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Yojana Navigator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+</head>
+<body>
+    <header>
+       <!-- hospital icon -->
+            <h1>
+                <i class="fa-solid fa-hospital"> </i>  Health Yojana Navigator
+            </h1>
+        
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('home')">Home</a></li>
+                <!-- <li><a href="#" onclick="showSection('login')">Login</a></li> -->
+                <li><a href="#" onclick="showSection('appointment')">Appointments</a></li>
+                <li><a href="#" onclick="showSection('insuranceCalculator')">Insurance Calculator</a></li>
+                <li><a href="#" onclick="showSection('yojanaList')">Health Yojanas</a></li>
+
+                <!-- profile changes -->
+    
+              
+                 <!-- profile changes -->
+    
+ </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="visible">
+            <div class="home-container">
+                <h2 class="animated">Welcome to Health Yojana Navigator!</h2>
+                <p class="subtext">Your guide to smarter, accessible, and affordable healthcare.</p>
+                <div id="clock"></div>
+            </div>
+            <div id="patientRegistration">
+                <h2>New Patient Registration</h2>
+                <form onsubmit="registerPatient(); return false;">
+                    <label for="patientName">Name:</label>
+                    <input type="text" id="patientName" placeholder="Enter patient name" required><br>
+            
+                    <label for="patientAge">Age:</label>
+                    <input type="number" id="patientAge" placeholder="Enter patient age" required><br>
+            
+                    <label for="patientGender">Gender:</label>
+                    <select id="patientGender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select><br>
+            
+                    <label for="patientContact">Contact:</label>
+                    <input type="text" id="patientContact" placeholder="Enter contact number" required><br>
+            
+                    <button type="submit">Register Patient</button>
+                </form>
+                <p id="registrationResult"></p>
+            </div>
+
+            <div class="features">
+                <div class="card clickable" onclick="showSection('appointment')">
+                    <span>🩺</span>
+                    <h3>Easy Appointments</h3>
+                    <p>Book hospital visits with a click — no queues, no stress!</p>
+                </div>
+                <!-- this feature requires database, so skip for now -->
+                <div class="card clickable" onclick="showSection('login')">
+                    <span>📁</span>
+                    <h3>Medical Records</h3>
+                    <p>Access reports and prescriptions anytime, anywhere.</p>
+                </div>
+                <div class="card clickable" onclick="showSection('insuranceCalculator')">
+                    <span>💡</span>
+                    <h3>Smart Policy Tips</h3>
+                    <p>Get personalized insurance suggestions tailored to you.</p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Login Section -->
+        <!-- <section id="login" style="display: none;">
+            <h2>Login</h2>
+            <label for="role">Role</label>
+            <select id="role">
+                <option value="Patient">Patient</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Admin">Admin</option>
+            </select>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button onclick="login()">Login</button>
+            <p id="loginStatus"></p>
+        </section> -->
+
+        <!-- Appointment Section -->
+        
+
+        <section id="appointment" style="display: block;">
+            <h2>Book an Appointment</h2>
+            <input type="text" id="patientName" placeholder="Your Name" required>
+            <input type="date" id="appointmentDate" required>
+            <select id="doctor">
+                <option value="">Select Doctor</option>
+                <option value="Dr. A Sharma">Dr. A Sharma</option>
+                <option value="Dr. B Verma">Dr. B Verma</option>
+            </select>
+            <button onclick="bookAppointment()">Book</button>
+            <p id="bookingResult"></p>
+        </section>
+
+        <!-- Insurance Calculator Section -->
+        <section id="insuranceCalculator" style="display: none;">
+            <h2>Check Eligibility for Yojanas</h2>
+            <form id="yojana-form">
+                <input type="number" id="income" placeholder="Annual Income (INR)" required>
+                <input type="text" id="ration-card" placeholder="Ration Card Type (Yellow/Orange/White)" required>
+                <input type="text" id="state" placeholder="State" required>
+                <button type="submit">Check Eligibility</button>
+            </form>
+            <div id="results" style="margin-top: 20px;"></div>
+        </section>
+
+        <!-- Yojana List Section -->
+        <section id="yojanaList" style="display: none;">
+            <h2>Available Government of India Yojanas and Private Insurance </h2>
+            <div class="yojana-card">
+                <h2>Ayushman Bharat - PM-JAY</h2>
+                <p><strong>Concession / Insurance:</strong> ₹5 lakh per family per year for secondary and tertiary hospitalization.</p>
+                <p><strong>Financial Eligibility:</strong> Automatically includes families based on SECC 2011 data. Income status: Below Poverty Line (BPL) or economically vulnerable households.</p>
+            </div>
+            <div class="yojana-card">
+                <h2>Rashtriya Swasthya Bima Yojana (RSBY)</h2>
+                <p><strong>Concession / Insurance:</strong> ₹30,000 per family per annum (earlier coverage).</p>
+                <p><strong>Financial Eligibility:</strong> Families identified as BPL by State governments. Must be unorganized sector workers and their families.</p>
+            </div>
+    
+            <div class="yojana-card">
+                <h2>Chief Minister’s Comprehensive Health Insurance Scheme (CMCHIS)</h2>
+                <p><strong>Concession / Insurance:</strong> Up to ₹5 lakh per family per year.</p>
+                <p><strong>Financial Eligibility:</strong> Annual income must be below ₹1.20 lakh. Priority to low-income and unorganized sector families.</p>
+            </div>
+    
+            <div class="yojana-card">
+                <h2>Mahatma Jyotiba Phule Jan Arogya Yojana (MJPJAY)</h2>
+                <p><strong>Concession / Insurance:</strong> Up to ₹1.5 lakh per family per year.</p>
+                <p><strong>Financial Eligibility:</strong> Must possess Yellow or Orange Ration Cards. Typically applies to income below ₹1 lakh per year.</p>
+            </div>
+    
+            <div class="yojana-card">
+                <h2>Biju Swasthya Kalyan Yojana</h2>
+                <p><strong>Concession / Insurance:</strong> ₹5 lakh per family, ₹10 lakh for women members.</p>
+                <p><strong>Financial Eligibility:</strong> Applicable for BPL and APL families with income less than ₹50,000/year (rural) or ₹60,000/year (urban).</p>
+            </div>
+    
+            <div class="yojana-card">
+                <h2>Aarogyasri Scheme</h2>
+                <p><strong>Concession / Insurance:</strong> ₹2 lakh per family per annum for serious ailments.</p>
+                <p><strong>Financial Eligibility:</strong> White Ration Card holders (annual income below ₹5 lakh). Residents of Andhra Pradesh or Telangana.</p>
+            </div>
+    
+            <div class="yojana-card">
+                <h2>Mukhyamantri Amrutum (MA) Yojana</h2>
+                <p><strong>Concession / Insurance:</strong> ₹5 lakh per family per year.</p>
+                <p><strong>Financial Eligibility:</strong> Family income less than ₹4 lakh per annum. Specific to BPL, Antyodaya, and other vulnerable groups.</p>
+            </div>
+    
+            <div class="yojana-card">
+                <h2>Yeshasvini Health Insurance Scheme</h2>
+                <p><strong>Concession / Insurance:</strong> Covers surgeries up to ₹2 lakh/year.</p>
+                <p><strong>Financial Eligibility:</strong> Designed for rural co-operative society members. Targeted at low to middle-income rural populations.</p>
+            </div>
+    
+            <div class="yojana-card">
+                <h2>Dr. YSR Aarogyasri</h2>
+                <p><strong>Concession / Insurance:</strong> ₹5 lakh per family per year.</p>
+                <p><strong>Financial Eligibility:</strong> Must have white ration card. Annual income below ₹5 lakh.</p>
+            </div>
+    
+            <div class="yojana-card">
+                <h2>Delhi Arogya Kosh (DAK)</h2>
+                <p><strong>Concession / Insurance:</strong> Up to ₹5 lakh for medical treatment for residents.</p>
+                <p><strong>Financial Eligibility:</strong> Must be a Delhi resident with annual income below ₹3 lakh. Requires income certificate and residency proof.</p>
+            </div>
+    
+            <div class="yojana-card">
+                <h2>Central Government Health Scheme (CGHS)</h2>
+                <p><strong>Concession / Insurance:</strong> Comprehensive health coverage for central government employees, pensioners, and their dependents.</p>
+                <p><strong>Eligibility:</strong> Central government employees, pensioners, and their families.</p>
+            </div>
+    
+            <div class="yojana-card">
+                <h2>Employee State Insurance Scheme (ESIS)</h2>
+                <p><strong>Concession / Insurance:</strong> Covers medical care, hospitalization, and maternity benefits.</p>
+                <p><strong>Eligibility:</strong> Employees earning up to ₹21,000 per month in organizations registered under the ESIC Act.</p>
+            </div>
+    
+            <div class="yojana-card">
+                <h2>Private Health Insurance Plans</h2>
+                <p><strong>Concession / Insurance:</strong> Coverage varies based on the plan chosen.</p>
+                <p><strong>Eligibility:</strong> Open to all individuals, including middle-class and upper-class families.</p>
+            </div>
+        </section>
+    </div>
+</section>
+
+<section id="yojanaList" style="display:none;">
+    <h2>Yojana Eligibility Calculator</h2>
+    <div class="yojana-card">
+        <h3>Ayushman Bharat - PM-JAY</h3>
+        <p><strong>Concession / Insurance:</strong> ₹5 lakh per family per year for secondary and tertiary hospitalization.</p>
+        <p><strong>Financial Eligibility:</strong> Automatically includes families based on SECC 2011 data. Income status: Below Poverty Line (BPL) or economically vulnerable households.</p>
+      </div>
+    
+      <div class="yojana-card">
+        <h3>Rashtriya Swasthya Bima Yojana (RSBY)</h3>
+        <p><strong>Concession / Insurance:</strong> ₹30,000 per family per annum (earlier coverage).</p>
+        <p><strong>Financial Eligibility:</strong> BPL families.</p>
+      </div>
+    
+      <div class="yojana-card">
+        <h3>Chief Minister’s Comprehensive Health Insurance Scheme (CMCHIS)</h3>
+        <p><strong>Concession / Insurance:</strong> Up to ₹5 lakh per family per year.</p>
+        <p><strong>Financial Eligibility:</strong> Annual income must be below ₹72,000. Meant for low-income and unorganized sector families.</p>
+      </div>
+      <div class="yojana-card">
+          <h3>Mahatma Jyotiba Phule Jan Arogya Yojana (MJPJAY)</h3>
+          <p><strong> Concession / Insurance:</strong>  Up to ₹1.5 lakh per family per year.
+          <p><strong>  Financial Eligibility:</strong> Must possess Yellow or Orange Ration Cards. Typically applies to income below ₹1 lakh per year.</p>
+      <div class="yojana-card">
+          <h3>Aarogyasri Scheme<h/3>
+          <p><strong> Concession / Insurance: </strong> ₹2 lakh per family per annum for serious ailments.
+          <p><strong>Financial Eligibility:</strong> White Ration Card holders (annual income below ₹5 lakh). Residents of Andhra Pradesh or Telangana.
+      <div class="yojana-card">
+          <h3>Biju Swasthya Kalyan Yojana<h/3>
+          <p><strong> Concession / Insurance:</strong> ₹5 lakh per family, ₹10 lakh for women members.
+          <p><strong> Financial Eligibility:</strong> Applicable for BPL and APL families with income less than ₹50,000/year (rural) or ₹60,000/year (urban).
+              <div class="yojana-card">
+                  <h3>Mukhyamantri Amrutum (MA) Yojana</h3>
+                  <p><strong>Concession / Insurance:</strong> ₹5 lakh per family per year.</p>
+                  <p><strong>Financial Eligibility:</strong> Family income less than ₹4 lakh per annum. Specific to BPL, Antyodaya, and other vulnerable groups.</p>
+                </div>
+                
+                <div class="yojana-card">
+                  <h3>Yeshasvini Health Insurance Scheme</h3>
+                  <p><strong>Concession / Insurance:</strong> Covers surgeries up to ₹2 lakh/year.</p>
+                  <p><strong>Financial Eligibility:</strong> Designed for rural co-operative society members. Targeted at low to middle-income rural populations.</p>
+                </div>
+                
+                <div class="yojana-card">
+                  <h3>Dr. YSR Aarogyasri</h3>
+                  <p><strong>Concession / Insurance:</strong> ₹5 lakh per family per year.</p>
+                  <p><strong>Financial Eligibility:</strong> Must have white ration card. Annual income below ₹5 lakh.</p>
+                </div>
+                
+                <div class="yojana-card">
+                  <h3>Delhi Arogya Kosh (DAK)</h3>
+                  <p><strong>Concession / Insurance:</strong> Up to ₹5 lakh for medical treatment for residents.</p>
+                  <p><strong>Financial Eligibility:</strong> Must be a Delhi resident with annual income below ₹3 lakh. Requires income certificate and residency proof.</p>
+                </div>
+                
+                <div class="yojana-card">
+                  <h3>Central Government Health Scheme (CGHS)</h3>
+                  <p><strong>Concession / Insurance:</strong> Comprehensive health coverage for central government employees, pensioners, and their dependents.</p>
+                  <p><strong>Eligibility:</strong> Central government employees, pensioners, and their families.</p>
+                </div>
+                
+                <div class="yojana-card">
+                  <h3>Employee State Insurance Scheme (ESIS)</h3>
+                  <p><strong>Concession / Insurance:</strong> Covers medical care, hospitalization, and maternity benefits.</p>
+                  <p><strong>Eligibility:</strong> Employees earning up to ₹21,000 per month in organizations registered under the ESIC Act.</p>
+                </div>
+                
+                <div class="yojana-card">
+                  <h3>Private Health Insurance Plans</h3>
+                  <p><strong>Concession / Insurance:</strong> Coverage varies based on the plan chosen.</p>
+                  <p><strong>Eligibility:</strong> Open to all individuals, including middle-class and upper-class families.</p>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>© 2025 Health Yojana Navigator. All rights reserved.</p>
+            <p class="contact-info">Emergency Contact: +91 1800-XXX-XXXX | Email: contact@healthyojana.org</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
